@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Список</title>
+  <link href="bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="main.js"></script>
+</head>
+
+<body>
+  <!-- Этап 1. Создайте верстку элементов, которые будут статичны (неизменны).  -->
+  <div class="container pt-3">
+    <!-- Кнопка-триггер модального окна -->
+    <div class="row">
+      <div class="col">
+        <button type="button" class="btn btn-primary" id="modal-show-btn">Добавить</button>
+        <button class="filter-btn btn btn-primary" type="button">Открыть фильтры</button>
+      </div>
+    </div>
+    <div class="row pt-3">
+      <div class="col border rounded">
+        <!-- <h1 class="text-center py-3">Список</h1> -->
+        <div class="filter mb-3">
+          <div class="row">
+            <div class="col align-middle">
+              <h5>Фильтровать по:</h5>
+            </div>
+          </div>
+          <div class="row filter__row form">
+            <div class="col filter__col">
+              <label class="form-label filter__label">Фамилии</label>
+              <input class="form-control form-control-sm filter__input" id="filter-name" autocomplete="off" type="text">
+            </div>
+            <div class="col filter__col">
+              <label class="form-label filter__label">Дате рождения</label>
+              <input class="form-control form-control-sm filter__input" id="filter-birthday" autocomplete="off" type="text">
+            </div>
+            <div class="col filter__col">
+              <label class="form-label filter__label">Году поступления</label>
+              <input class="form-control form-control-sm filter__input" id="filter-startAge" autocomplete="off" type="text">
+            </div>
+            <div class="col filter__col">
+              <label class="form-label filter__label">Факультету</label>
+              <input class="form-control form-control-sm filter__input" id="filter-faculty" autocomplete="off" type="text">
+            </div>
+          </div>
+        </div>
+        <table class="table table-hover align-middle border-top border-black border-2">
+          <thead>
+            <tr>
+              <th><span id="index">#</span></th>
+              <th><span id="full-name" class="user-select-none table-head down">ФИО</span></th>
+              <th><span id="birthday" class="user-select-none table-head">Дата рождения</span></th>
+              <th><span id="year" class="user-select-none table-head">Год поступления</span></th>
+              <th><span id="faculty" class="user-select-none table-head">Факультет</span></th>
+            </tr>
+          </thead>
+          <tbody class="table-group-divider" id="tbody">
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Начало модального окна -->
+    <div class="my-modal row">
+      <!-- <div class="col-3"></div> -->
+      <div class="my-modal__body border rounded col p-3">
+        <button type="button" class="my-modal__btn btn-close" aria-label="Закрыть"></button>
+        <!-- <h1 class="my-modal__title fs-5">Форма добавления студента</h1> -->
+        <form class="my-modal__form border rounded p-3" novalidate>
+          <div class="modal__input-container mb-3 position-relative">
+            <label for="input-lastName" class="form-label">Фамилия</label>
+            <input type="text" class="form-control" autocomplete="off" id="input-lastName" placeholder="Введите фамилию"
+              minlength="2" required>
+            <div class="message position-absolute bottom--10 end-0 text-end"></div>
+          </div>
+          <div class="modal__input-container mb-3 position-relative">
+            <label for="input-firstName" class="form-label">Имя</label>
+            <input type="text" class="form-control" autocomplete="off" id="input-firstName" placeholder="Введите имя"
+              minlength="2" required>
+            <div class="message position-absolute bottom--10 end-0 text-end"></div>
+          </div>
+          <div class="modal__input-container mb-3 position-relative">
+            <label for="input-middleName" class="form-label">Отчество</label>
+            <input type="text" class="form-control" autocomplete="off" id="input-middleName"
+              placeholder="Введите отчество" minlength="2" required>
+            <div class="message position-absolute bottom--10 end-0 text-end"></div>
+          </div>
+          <div class="modal__input-container mb-3 position-relative">
+            <label for="input-birthday" class="form-label">Дата рождения</label>
+            <input type="date" class="form-control" autocomplete="off" id="input-birthday"
+              placeholder="Введите дату рождения" value="1900-01-01" min="1900-01-01" required>
+            <div class="message position-absolute bottom--10 end-0 text-end"></div>
+          </div>
+          <div class="modal__input-container mb-3 position-relative">
+            <label for="input-year" class="form-label">Год поступления</label>
+            <input type="number" class="form-control" autocomplete="off" id="input-year"
+              placeholder="Введите год поступления" value="2000" min="2000" required>
+            <div class="message position-absolute bottom--10 end-0 text-end"></div>
+          </div>
+          <div class="modal__input-container mb-4 position-relative">
+            <label for="input-faculty" class="form-label">Факультет</label>
+            <select class="form-select" id="input-faculty" required>
+              <option selected disabled value="">Выберите факультет</option>
+              <option value="Физический">Физический</option>
+              <option value="Математический">Математический</option>
+              <option value="Философский">Философский</option>
+              <option value="Химический">Химический</option>
+            </select>
+            <div class="message position-absolute bottom--10 end-0 text-end"></div>
+          </div>
+          <button type="submit" class="btn btn-primary">Добавить</button>
+        </form>
+      </div>
+      <!-- <div class="col-3"></div> -->
+    </div>
+    <!-- Конец модального окна -->
+
+  </div>
+
+  <!-- <script src="bootstrap.bundle.min.js"></script> -->
+</body>
+
+</html>

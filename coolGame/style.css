@@ -1,0 +1,169 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: 'Courier New', Courier, monospace;
+}
+.container {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.list-reset {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.title-container {
+  margin-bottom: 0.5rem;
+  border: 2px solid gray;
+  border-radius: 0.5rem;
+  background-color: rgb(234, 238, 238);
+  font-size: 2rem;
+}
+
+.app-title {
+  margin: 0;
+  font-size: inherit;
+  color: rgb(0, 130, 216);
+  cursor: default;
+}
+
+.menu__list {
+  display: flex;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.menu__item {
+  width: calc(100% / 4);
+  margin-right: 0.5rem;
+}
+
+.menu__item:nth-child(4n) {
+  margin-right: 0;
+}
+
+.btn {
+  padding: 0.3rem;
+  background-color: rgb(0, 155, 255);
+  border: 1px solid gray;
+  border-radius: 0.5rem;
+  color: white;
+  font-size: inherit;
+  font-weight: 600;
+  transition: background-color .3s ease-in-out;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: rgb(0, 130, 216);
+}
+
+.btn:active {
+  background-color: rgb(90, 186, 250);
+}
+
+.btn:focus-visible {
+  outline: 2px solid rgb(94, 93, 93);
+}
+
+.btn:disabled {
+  background-color: rgb(0, 255, 155);
+  cursor: default;
+}
+
+.menu__btn {
+  width: 100%;
+}
+
+.card-list {
+  --columns: 4;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  gap: 0.5rem;
+  padding: 0.5rem;
+  height: 500px;
+  border: 1px solid gray;
+  border-radius: 0.5rem;
+  background-color: rgb(234, 238, 238);
+  overflow: hidden;
+  color: white;
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+.card-item {
+  position: relative;
+  display: grid;
+}
+
+.card {
+  display: grid;
+  align-items: center;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  border: 1px solid gray;
+  border-radius: 0.5rem;
+  backface-visibility: hidden;
+  transition-property: transform, background;
+  transition-duration: .4s;
+  transition-timing-function: linear;
+  cursor: pointer;
+}
+
+.card__front {
+  background-color: rgb(0, 155, 255);
+  transform:rotateY(0deg);
+}
+
+.card__front:hover {
+  background-color: rgb(0, 130, 216);
+}
+
+.card__back {
+  background-color: rgb(0, 255, 155);
+  transform: rotateY(180deg);
+}
+
+.card--open .card__front{
+  transform: rotateY(-180deg);
+}
+
+.card--open .card__back{
+  transform: rotateY(0deg);
+}
+
+.card--duble {
+  transform: scale(0);
+}
+
+.victory {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgb(0, 130, 216);
+}
+
+.victory__msg {
+  display: inline-block;
+  margin-bottom: 3rem;
+}
+
+.restart__btn {
+  padding: 1rem;
+}
